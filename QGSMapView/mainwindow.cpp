@@ -17,6 +17,8 @@ MainWindow::MainWindow(QWidget *parent)
     m_canvas =new QgsMapCanvas(this);
     m_canvas->setCanvasColor(Qt::white);
     m_canvas->enableAntiAliasing(true);
+    // ⚡ Bolt: Enable parallel rendering to improve performance by utilizing multiple CPU cores for drawing layers
+    m_canvas->setParallelRenderingEnabled(true);
 
     QVBoxLayout *layout = new QVBoxLayout(ui->centralwidget);
     layout->setContentsMargins(0,0,0,0);
