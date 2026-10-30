@@ -1,1 +1,6 @@
-hello
+build/
+debug/
+Makefile*
+ui_mainwindow.h
+*.o
+*.exe
