@@ -6,7 +6,8 @@ int main(int argc, char *argv[])
 
 {
     QgsApplication a(argc ,argv, true);
-    QgsApplication::setPrefixPath("C:/QGIS/mysys64_QtQGisAll/mingw64",true);
+    // Optimization: Use QStringLiteral to avoid runtime memory allocation and character conversion overhead
+    QgsApplication::setPrefixPath(QStringLiteral("C:/QGIS/mysys64_QtQGisAll/mingw64"), true);
     QgsApplication::initQgis();
 
     MainWindow w;
