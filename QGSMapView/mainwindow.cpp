@@ -22,12 +22,14 @@ MainWindow::MainWindow(QWidget *parent)
     layout->setContentsMargins(0,0,0,0);
     layout->addWidget(m_canvas);
 
-    QString rasterPath = QStringLiteral("C:/QGIS/msys64_QtQGisAll/worldTiff/world.tif");
-    m_rasterLayer = new QgsRasterLayer(rasterPath, QStringLiteral("World Map"), QStringLiteral("gdal"));
+    QString rasterPath ="C:/QGIS/msys64_QtQGisAll/worldTiff/world.tif";
+    m_rasterLayer =new QgsRasterLayer(rasterPath, "World Map","gdal");
 
     if(!m_rasterLayer->isValid())
     {
-        qCritical()<<"Failed to load raster map!Check your file path.";
+        qCritical() << "Failed to load raster map! Check your file path.";
+        delete m_rasterLayer;
+        m_rasterLayer = nullptr;
         return;
     }
     QgsProject::instance()->addMapLayer(m_rasterLayer);

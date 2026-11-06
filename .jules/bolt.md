@@ -1,3 +1,3 @@
-## 2026-10-30 - [Optimize QString Literals]
-**Learning:** In Qt code, replacing string literals with `QStringLiteral` avoids runtime allocation and UTF-8 string conversion, which can be an easy performance win.
-**Action:** Always consider using `QStringLiteral` when constructing static string paths or labels in Qt C++ applications.
+## 2026-10-30 - [Optimize QString Literals and Memory Checks]
+**Learning:** In Qt code, replacing string literals with `QStringLiteral` avoids runtime allocation and UTF-8 string conversion. Memory leaks can occur in Qt applications when heap allocations are assigned to raw pointers and fail to initialize without passing ownership to a parent object.
+**Action:** Always consider using `QStringLiteral` when constructing static string paths or labels in Qt C++ applications. Always `delete` and nullify heap-allocated raw pointers if construction or initialization fails before they're passed to a Qt parent object.
