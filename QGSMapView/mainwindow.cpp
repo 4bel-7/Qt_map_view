@@ -22,8 +22,9 @@ MainWindow::MainWindow(QWidget *parent)
     layout->setContentsMargins(0,0,0,0);
     layout->addWidget(m_canvas);
 
-    QString rasterPath ="C:/QGIS/msys64_QtQGisAll/worldTiff/world.tif";
-    m_rasterLayer =new QgsRasterLayer(rasterPath, "World Map","gdal");
+    // Use QStringLiteral to prevent runtime string conversion overhead (performance optimization)
+    QString rasterPath = QStringLiteral("C:/QGIS/msys64_QtQGisAll/worldTiff/world.tif");
+    m_rasterLayer = new QgsRasterLayer(rasterPath, QStringLiteral("World Map"), QStringLiteral("gdal"));
 
     if(!m_rasterLayer->isValid())
     {
